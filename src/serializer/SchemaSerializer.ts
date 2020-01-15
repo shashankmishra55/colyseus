@@ -16,6 +16,12 @@ export class SchemaSerializer<T> implements Serializer<T> {
   private handshakeCache: number[];
 
   public reset(newState: T & Schema) {
+<<<<<<< HEAD
+=======
+    // if (!(newState instanceof Schema)) {
+    //   throw new Error(`SchemaSerializer error. See: https://docs.colyseus.io/migrating/0.10/#new-default-serializer`);
+    // }
+>>>>>>> temporary change in SchemaSerializer
     this.state = newState;
     this.hasFiltersByClient = this.hasFilter(newState['_schema'] || {}, newState['_filters'] || {});
   }
