@@ -1,4 +1,5 @@
 import redis from 'redis';
+import Redis = from 'ioredis';
 import { promisify } from 'util';
 
 import { Presence } from './Presence';
@@ -23,9 +24,14 @@ export class RedisPresence implements Presence {
     protected decrAsync: any;
 
     constructor(opts?: redis.ClientOpts) {
-        this.sub = redis.createClient(opts);
-        this.pub = redis.createClient(opts);
-
+//      this.sub = redis.createClient(opts);
+//      this.pub = redis.createClient(opts);
+       var nodes = [{
+          port: opts.port,
+          host: opts.host
+        }];
+        this.pub = new Redis.Cluster(nodes);
+        this.sub = new Redis.Cluster(nodes);
         // no listener limit
         this.sub.setMaxListeners(0);
 
