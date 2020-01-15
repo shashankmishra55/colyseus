@@ -1,7 +1,7 @@
 {
-  "name": "colyseus",
-  "version": "0.12.0",
-  "description": "Multiplayer Game Server for Node.js.",
+  "name": "colyseus-cluster",
+  "version": "0.11.29",
+  "description": "Colyseus patch to use Redis-Cluster",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
@@ -11,10 +11,6 @@
     "test": "COLYSEUS_SEAT_RESERVATION_TIME=0.3 COLYSEUS_PRESENCE_SHORT_TIMEOUT=300 nyc mocha --require ts-node/register test/**Test.ts --exit --timeout 15000",
     "tslint": "tslint --project .",
     "update-contributors": "all-contributors generate"
-  },
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/endel"
   },
   "keywords": [
     "colyseus",
