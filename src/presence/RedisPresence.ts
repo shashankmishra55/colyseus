@@ -1,5 +1,5 @@
-import redis from 'redis';
-import Redis = from 'ioredis';
+import Redis from 'ioredis';
+
 import { promisify } from 'util';
 
 import { Presence } from './Presence';
@@ -7,9 +7,8 @@ import { Presence } from './Presence';
 type Callback = (...args: any[]) => void;
 
 export class RedisPresence implements Presence {
-    public sub: redis.RedisClient;
-    public pub: redis.RedisClient;
-
+    public sub: any;
+    public pub: any;
     protected subscribeAsync: any;
     protected unsubscribeAsync: any;
     protected publishAsync: any;
@@ -23,7 +22,7 @@ export class RedisPresence implements Presence {
     protected incrAsync: any;
     protected decrAsync: any;
 
-    constructor(opts?: redis.ClientOpts) {
+    constructor(opts?:any) {
 //      this.sub = redis.createClient(opts);
 //      this.pub = redis.createClient(opts);
        var nodes = [{
