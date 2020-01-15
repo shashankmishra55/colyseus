@@ -230,4 +230,23 @@ export class Server {
 
   }
 
+  public forceDisconnectClient(roomIds: string[], clientIds: string[]) {
+    console.log("Rooms joined " + roomIds.length);
+    for (let i = 0; i < roomIds.length; i++) {
+      console.log("Finding Room : " + roomIds[i]);
+      let room = matchMaker.getRoomById(roomIds[i]);
+      if (room) {
+        console.log("Room %s found ", roomIds[i]);
+        for (let index = 0; index < room.clients.length; index++) {
+          if (clientIds[i] == room.clients[index].id) {
+            room.clients[index].close();
+            break;
+          }
+        }
+      }
+      else {
+        console.log("Room %s not found ", roomIds[i]);
+      }
+    }
+  }
 }
